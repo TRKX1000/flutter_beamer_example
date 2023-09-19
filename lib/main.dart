@@ -1,9 +1,11 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_beamer_example/di/dependency_injection.dart';
 import 'package:flutter_beamer_example/ui/pages/home/home_screen.dart';
 import 'package:flutter_beamer_example/ui/pages/splash_screen.dart';
 
 void main() {
+  registerDependencies();
   runApp(MyApp());
 }
 
