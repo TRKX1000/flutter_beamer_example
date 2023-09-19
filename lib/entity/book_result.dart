@@ -22,6 +22,7 @@ class BookResult {
         writter: bookServiceResponse.authors.join(""),
         prize: 30.0,
         rating: 4.8,
+        imageUrl: bookServiceResponse.imageUrl,
       );
     });
 

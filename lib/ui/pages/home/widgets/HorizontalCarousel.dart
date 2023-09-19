@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_beamer_example/entity/book.dart';
 import 'package:flutter_beamer_example/entity/book_result.dart';
 
 class HorizontalCarousel extends StatelessWidget {
@@ -9,19 +10,29 @@ class HorizontalCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-      itemCount: bookResult.bookList.length,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: EdgeInsets.all(5.0),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Colors.red),
-          height: 200,
-          width: 250,
-          child: Text(bookResult.bookList[index].name),
-        );
-      },
+    return SizedBox(
+      height: 220,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        itemCount: bookResult.bookList.length,
+        itemBuilder: (context, index) {
+          Book book = bookResult.bookList[index];
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: SizedBox(
+              width: 140,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Image.network(
+                  book.imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

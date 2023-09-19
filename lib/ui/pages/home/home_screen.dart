@@ -13,19 +13,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.black12,
         body: FutureBuilder(
-          future: injector.get<BookRepository>().getBooks(),
+          future: injector.get<BookRepository>().getBestSellers(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               BookResult bookResult = snapshot.data as BookResult;
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 200,
-                    width: MediaQuery.of(context).size.width,
-                    child: HorizontalCarousel(
-                      bookResult: bookResult,
-                    ),
+                  const SizedBox(height: 20),
+                  const Text("Best Sellers", style: TextStyle(color: Colors.white, fontSize: 24)),
+                  const SizedBox(height: 10),
+                  HorizontalCarousel(
+                    bookResult: bookResult,
                   ),
                 ],
               );
